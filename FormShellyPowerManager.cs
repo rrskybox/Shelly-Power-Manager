@@ -127,7 +127,7 @@ namespace ShellyPowerManager
 
         private void ConfigureButton_Click(object sender, EventArgs e)
         {
-            string id = ASCOM.DriverAccess.Switch.Choose("");
+            string id = ASCOM.DriverAccess.Switch.Choose(ASCOM_Driver_Name);
 
             // Exit if no device was selected
             if (string.IsNullOrEmpty(id))
@@ -275,38 +275,22 @@ namespace ShellyPowerManager
 
         private void PresetButton_Click(object sender, EventArgs e)
         {
-            if (StandbyCheckbox0.Checked)
-                driver.SetSwitch(0, false);
-            else
-                driver.SetSwitch(0, true);
-            if (StandbyCheckbox1.Checked)
-                driver.SetSwitch(1, false);
-            else
-                driver.SetSwitch(1, true);
-            if (StandbyCheckbox2.Checked)
-                driver.SetSwitch(2, false);
-            else
-                driver.SetSwitch(2, true);
-            if (StandbyCheckbox3.Checked)
-                driver.SetSwitch(3, false);
-            else
-                driver.SetSwitch(3, true);
-            if (StandbyCheckbox4.Checked)
-                driver.SetSwitch(4, false);
-            else
-                driver.SetSwitch(4, true);
-            if (StandbyCheckbox5.Checked)
-                driver.SetSwitch(5, false);
-            else
-                driver.SetSwitch(5, true);
-            if (StandbyCheckbox6.Checked)
-                driver.SetSwitch(6, false);
-            else
-                driver.SetSwitch(6, true);
-            if (StandbyCheckbox7.Checked)
-                driver.SetSwitch(7, false);
-            else
-                driver.SetSwitch(7, true);
+            if (driver.MaxSwitch > 0)
+                driver.SetSwitch(0, StandbyCheckbox0.Checked);
+            if (driver.MaxSwitch > 1)
+                driver.SetSwitch(1, StandbyCheckbox1.Checked);
+            if (driver.MaxSwitch > 2)
+                driver.SetSwitch(2, StandbyCheckbox2.Checked);
+            if (driver.MaxSwitch > 3)
+                driver.SetSwitch(3, StandbyCheckbox3.Checked);
+            if (driver.MaxSwitch > 4)
+                driver.SetSwitch(4, StandbyCheckbox4.Checked);
+            if (driver.MaxSwitch > 5)
+                driver.SetSwitch(5, StandbyCheckbox5.Checked);
+            if (driver.MaxSwitch > 6)
+                driver.SetSwitch(6, StandbyCheckbox6.Checked);
+            if (driver.MaxSwitch > 7)
+                driver.SetSwitch(7, StandbyCheckbox7.Checked);
 
             LightThemUp();
 
